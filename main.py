@@ -1,10 +1,23 @@
 from customtkinter import *
 from PIL import Image
+from tkinter import messagebox
 
 root = CTk()
 root.resizable(0,0)
 root.geometry("1300x778")
 root.title("Login page")
+
+def login():
+    if usernameEntry.get() == "" or  passwordEntry.get == "":
+        messagebox.showerror("Error","All fields are required")
+    elif usernameEntry.get() == "mike" and passwordEntry.get() == "1234":
+        messagebox.showinfo("Success", "Login successful")
+    else:
+        messagebox.showerror("Error","Wrong credentials")
+
+
+
+
 
 image = CTkImage(Image.open("resources/cover5.jpg"), size=(1300,778))
 imageLabel = CTkLabel(root,image=image, text="")
@@ -26,7 +39,7 @@ passwordEntry.place(x=20,y=310)
 loginButton = CTkButton(root,text="Login",height=40,
                         corner_radius=10,bg_color="#3498eb",
                         font=("Arial", 14),fg_color="#4CAF50", 
-                        hover_color="#45A049",cursor = "hand2") 
+                        hover_color="#45A049",cursor = "hand2",command=login) 
 loginButton.place(x=80,y=360)
 
 root.mainloop()
