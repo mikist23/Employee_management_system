@@ -1,6 +1,8 @@
 import pymysql
 from tkinter import messagebox
 
+
+# *********************Creating a databse connection*************************
 def connect_database():
     global myCursor,conn
     try:
@@ -36,6 +38,12 @@ def fetch_employees():
     myCursor.execute("SELECT * FROM data")
     result = myCursor.fetchall()
     return result
+
+# *********************Update Employee**************************
+def update(id,new_name,new_phone,new_role,new_gender,new_salary):
+    myCursor.execute("UPDATE data SET name=%s,phone=%s,role=%s,gender=%s,salary=%s WHERE id=%s",(new_name,new_phone,new_role,new_gender,new_salary,id))
+    conn.commit()
+    
 
 
 connect_database()

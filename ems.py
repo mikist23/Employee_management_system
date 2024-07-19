@@ -8,9 +8,42 @@ import database
 
 
 
+# *********************Update Employee**************************
+def update_employee():
+    selected_item = tree.selection()
+    if not selected_item:
+        messagebox.showerror("Error","Select data to update")
+    else:
+        database.update(idEntry.get(),nameEntry.get(),phoneEntry.get(),roleBox.get(),genderBox.get(),salaryEntry.get())
+        treeview_data()
+        clear()
+        messagebox.showinfo("Success","Data updated successful")
+
+
+# *********************Row data selection**************************
+def selection(event):
+    selected_item = tree.selection()
+    if selected_item:
+        row =tree.item(selected_item)["values"]
+        clear()
+        idEntry.insert(0,row[0])
+        nameEntry.insert(0,row[1])
+        phoneEntry.insert(0,row[2])
+        roleBox.set(row[3])
+        genderBox.set(row[4])
+        salaryEntry.insert(0,row[5])
+    
+
+
+
 # *********************Reseting the fields**************************
 def clear():
-    pass
+    idEntry.delete(0,END)
+    nameEntry.delete(0,END)
+    phoneEntry.delete(0,END)
+    roleBox.set("Web Developer")
+    genderBox.set("Male")
+    salaryEntry.delete(0,END)
 
 # *********************Fetch Employees**************************
 def treeview_data():
@@ -161,7 +194,7 @@ newButton.grid(row=0,column=0,pady=10)
 addButton = CTkButton(buttonFrame,text="Add Employee",width=160,corner_radius=15,font=("arial",15,"bold"),command=add_employee)
 addButton.grid(row=0,column=1,pady=10,padx=5)
 
-updateButton = CTkButton(buttonFrame,text="Update Employee",width=160,corner_radius=15,font=("arial",15,"bold"))
+updateButton = CTkButton(buttonFrame,text="Update Employee",width=160,corner_radius=15,font=("arial",15,"bold"),command=update_employee)
 updateButton.grid(row=0,column=2,pady=10,padx=5)
 
 deleteButton = CTkButton(buttonFrame,text="Delete Employee",width=160,corner_radius=15,font=("arial",15,"bold"))
@@ -174,5 +207,10 @@ delete_allButton.grid(row=0,column=3,pady=10,padx=5)
 
 #Tree view  data update
 treeview_data()
+
+#Row Selection data
+window.bind("<ButtonRelease>",selection)
+
+
 
 window.mainloop()
