@@ -67,7 +67,7 @@ salaryEntry.grid(row=5,column=1)
 
 # *********************Right frame **************************
 
-rightFrame = CTkFrame(window)
+rightFrame = CTkFrame(window,fg_color="#161C30")
 rightFrame.grid(row=1,column=1)
 
 
@@ -115,5 +115,25 @@ style = ttk.Style()
 style.configure("Treeview.Heading",font=("arial",18,"bold"))
 
 
+
+# *********************Button frame **************************
+
+buttonFrame = CTkFrame(window,fg_color="#161C30")
+buttonFrame.grid(row=2,column=0,columnspan=2)
+
+newButton = CTkButton(buttonFrame,text="New Employee",width=160,corner_radius=15,font=("arial",15,"bold"))
+newButton.grid(row=0,column=0,pady=10)
+
+addButton = CTkButton(buttonFrame,text="Add Employee",width=160,corner_radius=15,font=("arial",15,"bold"))
+addButton.grid(row=0,column=1,pady=10,padx=5)
+
+updateButton = CTkButton(buttonFrame,text="Update Employee",width=160,corner_radius=15,font=("arial",15,"bold"))
+updateButton.grid(row=0,column=2,pady=10,padx=5)
+
+deleteButton = CTkButton(buttonFrame,text="Delete Employee",width=160,corner_radius=15,font=("arial",15,"bold"))
+deleteButton.grid(row=0,column=3,pady=10,padx=5)
+
+delete_allButton = CTkButton(buttonFrame,text="Delete All",width=160,corner_radius=15,font=("arial",15,"bold"))
+delete_allButton.grid(row=0,column=3,pady=10,padx=5)
 
 window.mainloop()
