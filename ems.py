@@ -67,7 +67,7 @@ salaryEntry.grid(row=5,column=1)
 
 # *********************Right frame **************************
 
-rightFrame = CTkFrame(window,fg_color="#161C30")
+rightFrame = CTkFrame(window,)
 rightFrame.grid(row=1,column=1)
 
 
@@ -88,7 +88,7 @@ serchButton.grid(row=0,column=2)
 show_allButton = CTkButton(rightFrame,text="Show All",width=100,corner_radius=10)
 show_allButton.grid(row=0,column=3,pady=10)
 
-tree = ttk.Treeview(rightFrame)
+tree = ttk.Treeview(rightFrame,)
 tree.grid(row=1,column=0,columnspan=4)
 
 tree["columns"]=("Id","Name","Phone","Role","Gender","Salary")
@@ -114,6 +114,9 @@ tree.column("Salary",width=140)
 style = ttk.Style()
 style.configure("Treeview.Heading",font=("arial",18,"bold"))
 
+#Scroll Bar
+scrollBar = ttk.Scrollbar(rightFrame)
+scrollBar.grid(row=1,column=4,sticky="ns",padx=4)
 
 
 # *********************Button frame **************************
