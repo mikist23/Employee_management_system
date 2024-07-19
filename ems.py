@@ -8,6 +8,9 @@ import database
 
 
 
+
+
+
 # *********************Update Employee**************************
 def update_employee():
     selected_item = tree.selection()
@@ -37,7 +40,9 @@ def selection(event):
 
 
 # *********************Reseting the fields**************************
-def clear():
+def clear(value=False):
+    if value:
+        tree.selection_remove(tree.focus())
     idEntry.delete(0,END)
     nameEntry.delete(0,END)
     phoneEntry.delete(0,END)
@@ -188,7 +193,7 @@ scrollBar.grid(row=1,column=4,sticky="ns",padx=4)
 buttonFrame = CTkFrame(window,fg_color="#161C30")
 buttonFrame.grid(row=2,column=0,columnspan=2)
 
-newButton = CTkButton(buttonFrame,text="New Employee",width=160,corner_radius=15,font=("arial",15,"bold"))
+newButton = CTkButton(buttonFrame,text="New Employee",width=160,corner_radius=15,font=("arial",15,"bold"),command=lambda : clear(True))
 newButton.grid(row=0,column=0,pady=10)
 
 addButton = CTkButton(buttonFrame,text="Add Employee",width=160,corner_radius=15,font=("arial",15,"bold"),command=add_employee)
