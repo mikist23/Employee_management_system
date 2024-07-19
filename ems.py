@@ -5,6 +5,21 @@ import database
 
 
 # *********************Functions **************************
+
+
+
+# *********************Reseting the fields**************************
+def clear():
+    pass
+
+# *********************Fetch Employees**************************
+def treeview_data():
+    employees = database.fetch_employees()
+    tree.delete(*tree.get_children())
+    for employee in employees:
+        tree.insert("",END,values=employee)
+
+# *********************Add Employee **************************
 def add_employee():
     if idEntry.get()==""or phoneEntry.get()=="" or nameEntry.get()==""or salaryEntry.get()=="":
         messagebox.showerror("Error","All Fields Are required ")
@@ -12,6 +27,11 @@ def add_employee():
         messagebox.showerror('Error',"Id already exists")
     else:
         database.insert(idEntry.get(),nameEntry.get(),phoneEntry.get(),roleBox.get(),genderBox.get(),salaryEntry.get())
+        treeview_data()
+        clear()
+        messagebox.showinfo("Success","Record is adedd successful")
+
+
 
 
 # *********************Gui part **************************
@@ -123,6 +143,7 @@ tree.column("Salary",width=140)
 #Styles
 style = ttk.Style()
 style.configure("Treeview.Heading",font=("arial",18,"bold"))
+style.configure("Treeview",font=("arial",15,"bold"),rowheight=30,foreground= "white",background="#161C30")
 
 #Scroll Bar
 scrollBar = ttk.Scrollbar(rightFrame)
@@ -148,5 +169,10 @@ deleteButton.grid(row=0,column=3,pady=10,padx=5)
 
 delete_allButton = CTkButton(buttonFrame,text="Delete All",width=160,corner_radius=15,font=("arial",15,"bold"))
 delete_allButton.grid(row=0,column=3,pady=10,padx=5)
+
+
+
+#Tree view  data update
+treeview_data()
 
 window.mainloop()
