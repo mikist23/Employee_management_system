@@ -1,7 +1,15 @@
 from customtkinter import *
 from PIL import Image
-from tkinter import ttk
+from tkinter import ttk,messagebox
+import database
 
+
+# *********************Functions **************************
+def add_employee():
+    if idEntry.get()==""or phoneEntry.get()=="" or nameEntry.get()==""or salaryEntry.get()=="":
+        messagebox.showerror("Error","All Fields Are required ")
+    else:
+        database.insert(idEntry.get(),nameEntry.get(),phoneEntry.get(),roleBox.get(),genderBox.get(),salaryEntry.get())
 
 
 # *********************Gui part **************************
@@ -127,7 +135,7 @@ buttonFrame.grid(row=2,column=0,columnspan=2)
 newButton = CTkButton(buttonFrame,text="New Employee",width=160,corner_radius=15,font=("arial",15,"bold"))
 newButton.grid(row=0,column=0,pady=10)
 
-addButton = CTkButton(buttonFrame,text="Add Employee",width=160,corner_radius=15,font=("arial",15,"bold"))
+addButton = CTkButton(buttonFrame,text="Add Employee",width=160,corner_radius=15,font=("arial",15,"bold"),command=add_employee)
 addButton.grid(row=0,column=1,pady=10,padx=5)
 
 updateButton = CTkButton(buttonFrame,text="Update Employee",width=160,corner_radius=15,font=("arial",15,"bold"))
