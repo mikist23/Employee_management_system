@@ -4,7 +4,7 @@ from tkinter import messagebox
 
 root = CTk()
 root.resizable(0,0)
-root.geometry("1300x778")
+root.geometry("1300x778+100+100")
 root.title("Login page")
 
 def login():

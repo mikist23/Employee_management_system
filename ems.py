@@ -8,6 +8,8 @@ import database
 def add_employee():
     if idEntry.get()==""or phoneEntry.get()=="" or nameEntry.get()==""or salaryEntry.get()=="":
         messagebox.showerror("Error","All Fields Are required ")
+    elif database.id_exists(idEntry.get()):
+        messagebox.showerror('Error',"Id already exists")
     else:
         database.insert(idEntry.get(),nameEntry.get(),phoneEntry.get(),roleBox.get(),genderBox.get(),salaryEntry.get())
 
