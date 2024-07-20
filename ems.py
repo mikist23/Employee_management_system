@@ -106,6 +106,8 @@ def add_employee():
         messagebox.showerror("Error","All Fields Are required ")
     elif database.id_exists(idEntry.get()):
         messagebox.showerror('Error',"Id already exists")
+    elif not idEntry.get().startswith("EMP"):
+        messagebox.showerror('Error',"Invalid id formart! Use 'EMP' followed by a number (ie EMP1...)")
     else:
         database.insert(idEntry.get(),nameEntry.get(),phoneEntry.get(),roleBox.get(),genderBox.get(),salaryEntry.get())
         treeview_data()
@@ -227,8 +229,9 @@ style.configure("Treeview.Heading",font=("arial",18,"bold"))
 style.configure("Treeview",font=("arial",15,"bold"),rowheight=30,foreground= "white",background="#161C30")
 
 #Scroll Bar
-scrollBar = ttk.Scrollbar(rightFrame)
+scrollBar = ttk.Scrollbar(rightFrame,orient=VERTICAL,command=tree.yview)
 scrollBar.grid(row=1,column=4,sticky="ns",padx=4)
+tree.config(yscrollcommand=scrollBar.set)
 
 
 # *********************Button frame **************************
