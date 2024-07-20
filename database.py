@@ -58,4 +58,10 @@ def search(option,value):
     result = myCursor.fetchall()
     return result
 
+# *********************Delete_All Employee **************************
+def delete_all_employees():
+    myCursor.execute("TRUNCATE TABLE data")
+    conn.commit()
+
+
 connect_database()

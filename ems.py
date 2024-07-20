@@ -7,6 +7,21 @@ import database
 # *********************Functions **************************
 
 
+# *********************Delete_All Employee **************************
+def delete_all_employee():
+    result = messagebox.askyesno("Confirm",'Do you really want to delete all the records?')
+    if result:
+        database.delete_all_employees()
+    else:
+        messagebox.showinfo('Cancelled', "Delete operation cancelled")
+
+
+# *********************Show_all Employee **************************
+def showall_employee():
+    treeview_data()
+    searchEntry.delete(0,END)
+    searchBox.set("Search By")
+
 
 
 # *********************Search Employee **************************
@@ -20,8 +35,6 @@ def search_employee():
         tree.delete(*tree.get_children())
         for employee in searched_data:
             tree.insert("",END,values=employee)
-
-
 
 
 
@@ -183,7 +196,7 @@ searchEntry.grid(row=0,column=1)
 serchButton = CTkButton(rightFrame,text="Search",width=100,corner_radius=10,command=search_employee)
 serchButton.grid(row=0,column=2)
 
-show_allButton = CTkButton(rightFrame,text="Show All",width=100,corner_radius=10)
+show_allButton = CTkButton(rightFrame,text="Show All",width=100,corner_radius=10,command=showall_employee)
 show_allButton.grid(row=0,column=3,pady=10)
 
 tree = ttk.Treeview(rightFrame,)
@@ -235,7 +248,7 @@ updateButton.grid(row=0,column=2,pady=10,padx=5)
 deleteButton = CTkButton(buttonFrame,text="Delete Employee",width=160,corner_radius=15,font=("arial",15,"bold"),command=delete_employee)
 deleteButton.grid(row=0,column=3,pady=10,padx=5)
 
-delete_allButton = CTkButton(buttonFrame,text="Delete All",width=160,corner_radius=15,font=("arial",15,"bold"))
+delete_allButton = CTkButton(buttonFrame,text="Delete All",width=160,corner_radius=15,font=("arial",15,"bold"),command=delete_all_employee)
 delete_allButton.grid(row=0,column=4,pady=10,padx=5)
 
 
