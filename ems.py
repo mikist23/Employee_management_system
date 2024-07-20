@@ -9,6 +9,22 @@ import database
 
 
 
+# *********************Search Employee **************************
+def search_employee():
+    if searchEntry.get()=="":
+        messagebox.showerror("Error","Enter value to search")
+    elif searchBox.get()=="":
+        messagebox.showerror("Error","Please select an option")
+    else:
+        searched_data = database.search(searchBox.get(),searchEntry.get())
+        tree.delete(*tree.get_children())
+        for employee in searched_data:
+            tree.insert("",END,values=employee)
+
+
+
+
+
 # *********************Delete Employee **************************
 def delete_employee():
     selected_item = tree.selection()
@@ -164,7 +180,7 @@ searchEntry = CTkEntry(rightFrame,font=("arial",15,"bold"))
 searchEntry.grid(row=0,column=1)
 
 
-serchButton = CTkButton(rightFrame,text="Search",width=100,corner_radius=10)
+serchButton = CTkButton(rightFrame,text="Search",width=100,corner_radius=10,command=search_employee)
 serchButton.grid(row=0,column=2)
 
 show_allButton = CTkButton(rightFrame,text="Show All",width=100,corner_radius=10)

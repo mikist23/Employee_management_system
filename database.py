@@ -51,4 +51,11 @@ def delete(id):
     myCursor.execute("DELETE FROM data WHERE id=%s",(id,))
     conn.commit()
 
+
+# *********************Search Employee **************************
+def search(option,value):
+    myCursor.execute(f"SELECT * FROM data WHERE {option}=%s",value)
+    result = myCursor.fetchall()
+    return result
+
 connect_database()
