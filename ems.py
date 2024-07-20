@@ -9,6 +9,20 @@ import database
 
 
 
+# *********************Delete Employee **************************
+def delete_employee():
+    selected_item = tree.selection()
+    if not selected_item:
+        messagebox.showerror('Error', "Select data to delete")
+    else:
+        confirm = messagebox.askyesno('Confirm Delete', 'Are you sure you want to delete this employee?')
+        if confirm:
+            database.delete(idEntry.get())
+            treeview_data()
+            clear()
+            messagebox.showinfo('Success', "Data deleted successfully")
+        else:
+            messagebox.showinfo('Cancelled', "Delete operation cancelled")
 
 
 # *********************Update Employee**************************
@@ -202,11 +216,11 @@ addButton.grid(row=0,column=1,pady=10,padx=5)
 updateButton = CTkButton(buttonFrame,text="Update Employee",width=160,corner_radius=15,font=("arial",15,"bold"),command=update_employee)
 updateButton.grid(row=0,column=2,pady=10,padx=5)
 
-deleteButton = CTkButton(buttonFrame,text="Delete Employee",width=160,corner_radius=15,font=("arial",15,"bold"))
+deleteButton = CTkButton(buttonFrame,text="Delete Employee",width=160,corner_radius=15,font=("arial",15,"bold"),command=delete_employee)
 deleteButton.grid(row=0,column=3,pady=10,padx=5)
 
 delete_allButton = CTkButton(buttonFrame,text="Delete All",width=160,corner_radius=15,font=("arial",15,"bold"))
-delete_allButton.grid(row=0,column=3,pady=10,padx=5)
+delete_allButton.grid(row=0,column=4,pady=10,padx=5)
 
 
 

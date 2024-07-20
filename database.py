@@ -46,4 +46,9 @@ def update(id,new_name,new_phone,new_role,new_gender,new_salary):
     
 
 
+# *********************Delete Employee **************************
+def delete(id):
+    myCursor.execute("DELETE FROM data WHERE id=%s",(id,))
+    conn.commit()
+
 connect_database()
