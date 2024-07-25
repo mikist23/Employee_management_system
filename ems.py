@@ -180,7 +180,7 @@ salaryEntry = CTkEntry(leftFrame,font=("arial",15,"bold"),width=200)
 salaryEntry.grid(row=5,column=1)
 
 
-# *********************Right frame **************************
+# *********************Right frame panel**************************
 
 rightFrame = CTkFrame(window,)
 rightFrame.grid(row=1,column=1)
@@ -222,7 +222,7 @@ tree.column("Id",width=100)
 tree.column("Name",width=170)
 tree.column("Phone",width=170)
 tree.column("Role",width=210)
-tree.column("Gender",width=100)
+tree.column("Gender",width=105)
 tree.column("Salary",width=140)
 
 #Styles
