@@ -118,6 +118,7 @@ def add_employee():
 
 
 # *********************Gui part **************************
+
 window = CTk()
 window.resizable(False,False)
 window.geometry("1300x778+100+100")
@@ -128,7 +129,8 @@ logoLabel = CTkLabel(window, image=logo,text="")
 logoLabel.grid(row=0,column=0,columnspan=2)
 
 
-# *********************Left frame **************************
+# *********************Left frame panel**************************
+
 leftFrame = CTkFrame(window,fg_color="#161C30")
 leftFrame.grid(row=1,column=0)
 
